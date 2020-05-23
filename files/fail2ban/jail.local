@@ -1,0 +1,6 @@
+[sshd]
+enabled = true
+bantime = 86400
+
+[DEFAULT]
+ignoreip = %HOME_IP%
