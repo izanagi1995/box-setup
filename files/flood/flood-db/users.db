@@ -1,0 +1,2 @@
+{"$$indexCreated":{"fieldName":"username","unique":true,"sparse":false}}
+{"username":"admin","password":"%flood_pass%","socketPath":"/run/php/.rtorrent.sock","isAdmin":true,"_id":"8lURz5s5ZPfT1mjN"}

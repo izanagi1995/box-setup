@@ -1,0 +1,46 @@
+version: '3'
+services:
+  rtorrent:
+    image: romancin/rutorrent-flood:latest
+    ports:
+      - '3000:3000'
+      # - '49184:49184'
+    restart: always
+    tty: true
+    environment:
+      - PUID=%media_uid%
+      - PGID=%media_gid%
+      - TZ=Europe/London
+    volumes:
+      - '/data/media/rtorrent:/downloads'
+      - '/data/media/flood:/config'
+
+  medusa:
+    image: linuxserver/medusa
+    container_name: medusa
+    environment:
+      - PUID=%media_uid%
+      - PGID=%media_gid%
+      - TZ=Europe/London
+    volumes:
+      - '/data/media/medusa:/config'
+      - '/data/media/rtorrent/completed:/downloads'
+      - '/data/media/tv-shows:/tv'
+    ports:
+      - 8081:8081
+    restart: unless-stopped
+
+  jackett:
+    image: linuxserver/jackett
+    container_name: jackett
+    environment:
+      - PUID=%media_uid%
+      - PGID=%media_gid%
+      - TZ=Europe/London
+      - RUN_OPTS=-x --NoUpdates
+    volumes:
+      - '/data/media/jackett:/config'
+      - '/data/media/rtorrent/watch:/downloads'
+    ports:
+      - 9117:9117
+    restart: unless-stopped

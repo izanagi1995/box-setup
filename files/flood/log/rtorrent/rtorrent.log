@@ -1,0 +1,6 @@
+1590351155 W Ignoring rtorrent.rc.
+1590351155 N rtorrent main: Starting thread.
+1590351155 N rtorrent scgi: Starting thread.
+1590351330 N rtorrent scgi: Shutting down thread.
+1590351330 N rtorrent main: Shutting down thread.
+1590351330 N rtorrent disk: Shutting down thread.
